@@ -1,16 +1,12 @@
-# This is a sample Python script.
+import asyncio
+from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+async def main():
+    async with AsyncWebCrawler() as crawler:
+        result = await crawler.arun(
+            url="https://www.qualityconnections.vip/",
+        )
+        print(result.markdown)  # Show the first 300 characters of extracted text
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+if __name__ == "__main__":
+    asyncio.run(main())
